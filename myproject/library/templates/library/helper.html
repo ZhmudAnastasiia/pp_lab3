@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список Глядачів</title>
+</head>
+<body>
+    <h1>Список Глядачів</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Ім'я</th>
+                <th>Номер телефону</th>
+                <th>Дата народження</th>
+                <th>Дії</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if viewers %}
+                {% for viewer in viewers %}
+                <tr>
+                    <td>{{ viewer.id }}</td>
+                    <td>{{ viewer.first_name }}</td>
+                    <td>{{ viewer.phone_number }}</td>
+                    <td>{{ viewer.birth_date}}</td>
+                    <td>
+                        <form method="POST" action="{% url 'library:delete_viewer' viewer.id %}">
+                            {% csrf_token %}
+                            <button type="submit">Видалити</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="4">Немає доступних глядачів.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</body>
+</html>

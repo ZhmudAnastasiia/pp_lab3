@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
 
 # Application definition
 
@@ -38,6 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'library.apps.LibraryConfig',
+    'rest_framework',
+    "rest_framework.authtoken",
+    "django.contrib.sites",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "dj_rest_auth",
+    "dj_rest_auth.registration",
 ]
 
 MIDDLEWARE = [
@@ -67,6 +76,12 @@ TEMPLATES = [
         },
     },
 ]
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+    ]
+}
 
 WSGI_APPLICATION = 'myproject.wsgi.application'
 
