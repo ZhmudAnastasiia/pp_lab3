@@ -1,0 +1,44 @@
+{% extends 'library/base.html' %}
+
+{% block title %}Деталі книги{% endblock %}
+
+{% block content %}
+<main>
+<h1>{{ book.title }}</h1>
+    <p>Рік публікації: {{ book.publication_year }}</p>
+    
+    <h2>Автори:</h2>
+<ul>
+    {% for author in authors %}
+        <li>{{ author.first_name }} {{ author.last_name }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Категорії:</h2>
+<ul>
+    {% for category in categories %}
+        <li>{{ category.name }}</li>
+    {% endfor %}
+</ul>
+    <div>
+        <form action="{% url 'library:book_edit' book.id %}" method="get">
+            <button type="submit" class="btn">Змінити</button>
+        </form>
+    </div>
+
+    <!-- Кнопка видалення -->
+    <div>
+        <form action="{% url 'library:book_delete' book.id %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn">Видалити</button>
+        </form>
+    </div>
+
+    <!-- Кнопка для повернення назад -->
+    <div>
+        <form action="{% url 'library:book_list' %}" method="get">
+            <button type="submit" class="btn">Назад до списку книг</button>
+        </form>
+    </div>
+</main>
+{% endblock %}

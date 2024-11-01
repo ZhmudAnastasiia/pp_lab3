@@ -1,0 +1,13 @@
+{% extends 'library/base.html' %}
+
+{% block content %}
+<main>
+    <h1>Видалити книгу</h1>
+    <p>Ви впевнені, що хочете видалити "{{ object.title }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Так, видалити</button>
+    </form>
+    <a href="{% url 'library:book_list' %}">Скасувати</a>
+</main>
+{% endblock %}

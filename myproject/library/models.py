@@ -30,6 +30,7 @@ class Book(models.Model):
     def __str__(self):
         return self.title
 
+
 class Author(models.Model):
     first_name = models.CharField(max_length=100, null=False)
     last_name = models.CharField(max_length=100, null=False)
@@ -45,6 +46,9 @@ class BookByAuthor(models.Model):
 
 class BookCategory(models.Model):
     name = models.CharField(max_length=100, null=False)
+    
+    def __str__(self):
+      return self.name
 
 class BookByCategory(models.Model):
     category = models.ForeignKey(BookCategory, on_delete=models.CASCADE)
