@@ -6,13 +6,13 @@ class NetworkHelper:
     def getlist(url):
         response = requests.get(url)
         print(f'ping status code: {response.status_code}')
-        print(f'ping body: {response.text}')  # Вивести текст відповіді
+        print(f'ping body: {response.text}')
         if response.status_code == 200:
             try:
                 return response.json()
             except ValueError as e:
                 print("Error parsing JSON:", e)
-            return []  # Повертаємо пустий список, якщо не вдалося обробити JSON
+            return []  
         else:
             return [] 
 

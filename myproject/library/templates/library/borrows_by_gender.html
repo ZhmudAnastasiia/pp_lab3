@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Borrow Distribution by Gender</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Borrow Distribution by Gender</h1>
+
+    <label for="gender-select">Filter by Gender:</label>
+    <select id="gender-select" multiple>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+    </select>
+
+    <div id="pie-chart-container">
+        {{ pie_graph|safe }}
+    </div>
+
+    <script>
+        $('#gender-select').change(function() {
+            const selectedGenders = $(this).val(); 
+            const url = selectedGenders.length > 0 ? `?gender=${selectedGenders.join(',')}` : '';
+
+            window.location.href = url;
+        });
+    </script>
+    
+    <button onclick="location.href='/dashboard1/reader-ranking/2/'">
+        Графік рейтингу категорії з id=2
+    </button>    
+</body>
+</html>

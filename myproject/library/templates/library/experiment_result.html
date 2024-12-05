@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Експеримент</title>
+</head>
+<body>
+    <h1>Результати експерименту</h1>
+    <h2>Час виконання залежно від кількості потоків</h2>
+    
+    <div>
+        {{ graph_html|safe }}  <!-- Виводимо графік -->
+    </div>
+
+    <h3>Дані експерименту:</h3>
+    <table border="1">
+        <tbody>
+            {% for thread_count, execution_time in combined_data %}
+            <p>Потоки: {{ thread_count }}, Час виконання: {{ execution_time }}</p>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Monthly Borrow Trends</title>
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-3.6.2.min.js"></script>
+</head>
+<body>
+    <form method="get">
+        <label for="month">Select Month:</label>
+        <select name="month" id="month">
+            <option value="">All Months</option>
+            <option value="2024-01" {% if request.GET.month == "2024-01" %}selected{% endif %}>January</option>
+            <option value="2024-02" {% if request.GET.month == "2024-02" %}selected{% endif %}>February</option>
+            <option value="2024-03" {% if request.GET.month == "2024-03" %}selected{% endif %}>March</option>
+            <option value="2024-04" {% if request.GET.month == "2024-04" %}selected{% endif %}>April</option>
+            <option value="2024-05" {% if request.GET.month == "2024-05" %}selected{% endif %}>May</option>
+            <option value="2024-06" {% if request.GET.month == "2024-06" %}selected{% endif %}>June</option>
+            <option value="2024-07" {% if request.GET.month == "2024-07" %}selected{% endif %}>July</option>
+            <option value="2024-08" {% if request.GET.month == "2024-08" %}selected{% endif %}>August</option>
+            <option value="2024-09" {% if request.GET.month == "2024-09" %}selected{% endif %}>September</option>
+            <option value="2024-10" {% if request.GET.month == "2024-10" %}selected{% endif %}>October</option>
+            <option value="2024-11" {% if request.GET.month == "2024-11" %}selected{% endif %}>November</option>
+            <option value="2024-12" {% if request.GET.month == "2024-12" %}selected{% endif %}>December</option>
+        </select>
+        <button type="submit">Filter</button>
+    </form>
+
+    <div>
+        {{ script|safe }}
+        {{ div|safe }}
+    </div>
+    
+    <button onclick="location.href='/dashboard2/reader-activity/'">
+        Графік активності читачів
+    </button> 
+</body>
+</html>

@@ -7,7 +7,7 @@
 
 <form method="post">
     {% csrf_token %}
-    {{ form.non_field_errors }}  <!-- Відображення помилок форми, якщо є -->
+    {{ form.non_field_errors }} 
 
     <label for="title">Назва:</label>
     <input type="text" id="title" name="title" value="{{ book.title }}" required><br>
@@ -36,11 +36,14 @@
     <button type="submit">Зберегти зміни</button>
 </form>
 
-<div>
-    <a href="{% url 'library:author_create' book.id %}">Додати автора</a><br>
-    <a href="{% url 'library:category_create' book.id %}">Додати категорію</a><br>
-</div>
-
-<a href="{% url 'library:book_detail' book.id %}">Назад до детальної інформації про книгу</a>
+{% if book and book.id %}
+    <div>
+        <a href="{% url 'library:author_create' book.id %}">Додати автора</a><br>
+        <a href="{% url 'library:category_create' book.id %}">Додати категорію</a><br>
+    </div>
+{% endif %}
+{% if book and book.id %}
+    <a href="{% url 'library:book_detail' book.id %}">Назад до детальної інформації про книгу</a>
+{% endif %}
 {% endblock %}
 

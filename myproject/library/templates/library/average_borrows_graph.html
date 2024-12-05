@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Середня кількість позик на читача для кожної бібліотеки</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+        function updateGraph() {
+            const selectedLibrary = document.getElementById('library').value;
+            const url = new URL(window.location.href);
+            url.searchParams.set('library', selectedLibrary);
+            window.location.href = url;
+        }
+    </script>
+</head>
+<body>
+    <h1>Середня кількість позик на читача для кожної бібліотеки</h1>
+
+    <div>
+        <label for="library">Виберіть бібліотеку: </label>
+        <select id="library" name="library" onchange="updateGraph()">
+            <option value="">-- Виберіть бібліотеку --</option>
+            {% for library in libraries %}
+                <option value="{{ library.name }}" {% if library.name == selected_library %}selected{% endif %}>
+                    {{ library.name }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div id="graph">
+        {{ graph|safe }}
+    </div>
+
+    <button onclick="location.href='/dashboard1/borrows_by_gender/'">
+        Графік кількості позик за статтю
+        </button> 
+</body>
+</html>
