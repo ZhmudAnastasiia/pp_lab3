@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reader Ranking by Category</title>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-3.6.2.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bokeh.org/bokeh/release/bokeh-3.6.2.min.css">
+</head>
+<body>
+
+    <h1>Reader Ranking by Category</h1>
+    <form method="get">
+        <button type="submit" name="sort_order" value="asc">Сортувати за зростанням</button>
+        <button type="submit" name="sort_order" value="desc">Сортувати за спаданням</button>
+    </form>
+    
+    {% if script and div %}
+    <div>
+        {{ div | safe }}
+    </div>
+    {{ script | safe }}
+{% else %}
+    <p>Немає даних для відображення графіка.</p>
+{% endif %}
+
+<button onclick="location.href='/dashboard2/average-borrows/'">
+    Графік середньої кількості взятих книг кожної бібліотеки
+    </button> 
+</body>
+</html>

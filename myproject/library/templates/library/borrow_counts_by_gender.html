@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrow Counts by Gender</title>
+
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-3.6.2.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.6.2.min.js"></script>
+</head>
+<body>
+    <h1>Borrow Counts by Gender</h1>
+
+    {{ script|safe }}
+    {{ div|safe }}
+
+    <button onclick="location.href='/dashboard2/top-readers/2/'">
+        Графік читачів автора з id=2
+        </button> 
+</body>
+</html>

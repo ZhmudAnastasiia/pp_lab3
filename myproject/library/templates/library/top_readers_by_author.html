@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Readers for Author</title>
+
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-3.6.2.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.6.2.min.js"></script>
+</head>
+<body>
+    <h1>Top Readers for Author</h1>
+    {{ script|safe }}
+    {{ div|safe }}
+
+    <button onclick="location.href='/dashboard2/reader-ranking/2/'">
+        Графік рейтингу категорії з id=2
+        </button> 
+</body>
+</html>

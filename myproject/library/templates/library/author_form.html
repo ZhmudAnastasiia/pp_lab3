@@ -1,0 +1,24 @@
+{% extends 'library/base.html' %}
+
+{% block title %}Додати автора{% endblock %}
+
+{% block content %}
+<h1>Додати автора</h1>
+<form method="post">
+    {% csrf_token %}
+    <label for="first_name">Ім'я:</label>
+    <input type="text" id="first_name" name="first_name" required><br>
+
+    <label for="last_name">Прізвище:</label>
+    <input type="text" id="last_name" name="last_name" required><br>
+
+    <label for="birth_year">Рік народження:</label>
+    <input type="number" id="birth_year" name="birth_year" required><br>
+
+    <label for="death_year">Рік смерті:</label>
+    <input type="number" id="death_year" name="death_year"><br>
+
+    <button type="submit">Додати автора</button>
+</form>
+<a href="{% url 'library:book_list' %}">Назад до списку книг</a>
+{% endblock %}

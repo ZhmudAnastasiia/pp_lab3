@@ -1,0 +1,17 @@
+{% extends 'library/base.html' %}
+
+{% block title %}Список книг{% endblock %}
+
+{% block content %}
+<main>
+    <h1>Список Книг</h1>
+    <ul>
+        {% for book in books %}
+            <li><a href="{% url 'library:book_detail' book.pk %}">{{ book.title }}</a></li>
+        {% empty %}
+            <li>Книги не знайдено.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'library:book_add' %}">Додати книгу</a>
+</main>
+{% endblock %}

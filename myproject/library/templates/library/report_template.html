@@ -1,0 +1,94 @@
+<h2>Report Results</h2>
+
+<p>Execution Time: {{ result.execution_time }} seconds</p>
+<p>Number of Threads: {{ result.num_threads }}</p>
+
+<h3>Reader Activity Duration</h3>
+<table>
+    <tr>
+        <th>Reader</th>
+        <th>Activity Duration (Days)</th>
+    </tr>
+    {% for reader, duration in result.reader_activity_duration %}
+    <tr>
+        <td>{{ reader }}</td>
+        <td>{{ duration }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h3>Monthly Borrow Trends by Category</h3>
+<table>
+    <tr>
+        <th>Category</th>
+        <th>Month</th>
+        <th>Borrow Count</th>
+    </tr>
+    {% for category, month, borrow_count in result.monthly_borrow_trends %}
+    <tr>
+        <td>{{ category }}</td>
+        <td>{{ month }}</td>
+        <td>{{ borrow_count }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h3>Borrow Counts by Gender</h3>
+<table>
+    <tr>
+        <th>Gender</th>
+        <th>Borrow Count</th>
+    </tr>
+    {% for gender, borrow_count in result.borrow_counts_by_gender %}
+    <tr>
+        <td>{{ gender }}</td>
+        <td>{{ borrow_count }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<!-- Виведення топ-читачів для автора -->
+<h3>Top Readers for Author</h3>
+<table>
+    <tr>
+        <th>Reader</th>
+        <th>Total Books Borrowed by Author</th>
+    </tr>
+    {% for reader in result.top_readers_for_author %}
+    <tr>
+        <td>{{ reader.first_name }} {{ reader.last_name }}</td>
+        <td>{{ reader.total_books_by_author }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h3>Reader Ranking by Category</h3>
+<table>
+    <tr>
+        <th>Reader</th>
+        <th>Total Borrows</th>
+        <th>Average Borrows</th>
+    </tr>
+    {% for reader in result.reader_ranking_by_category %}
+    <tr>
+        <td>{{ reader.first_name }} {{ reader.last_name }}</td>
+        <td>{{ reader.total_borrows }}</td>
+        <td>{{ reader.avg_borrows }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+<h3>Average Borrows Per Reader in Library</h3>
+<table>
+    <tr>
+        <th>Library</th>
+        <th>Average Borrows per Reader</th>
+    </tr>
+    {% for library in result.average_borrows_per_reader_in_library %}
+    <tr>
+        <td>{{ library.name }}</td>
+        <td>{{ library.avg_borrows_per_reader }}</td>
+    </tr>
+    {% endfor %}
+</table>

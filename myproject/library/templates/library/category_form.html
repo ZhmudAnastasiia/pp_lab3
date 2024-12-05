@@ -1,0 +1,15 @@
+{% extends 'library/base.html' %}
+
+{% block title %}Додати категорію{% endblock %}
+
+{% block content %}
+<h1>Додати категорію</h1>
+<form method="post">
+    {% csrf_token %}
+    <label for="name">Назва категорії:</label>
+    <input type="text" id="name" name="name" required><br>
+
+    <button type="submit">Додати категорію</button>
+</form>
+<a href="{% url 'library:book_list' %}">Назад до списку книг</a>
+{% endblock %}

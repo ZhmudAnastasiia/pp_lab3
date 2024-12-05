@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тренди позик по категоріях</title>
+    {{ script|safe }}
+</head>
+<body>
+    <h1>Тренди позик по категоріях</h1>
+
+    <!-- Виведення категорій та місяців -->
+    {% if categories %}
+        <h2>Дані для графіка:</h2>
+        <p><strong>Категорії:</strong> {{ categories }}</p>
+        <p><strong>Місяці:</strong> {{ months }}</p>
+        <p><strong>Кількість позик:</strong> {{ borrow_counts }}</p>
+    {% else %}
+        <p>Немає даних для відображення.</p>
+    {% endif %}
+
+    <!-- Вставка графіка -->
+    {% if script and div %}
+        <div>{{ div|safe }}</div>
+    {% else %}
+        <p>Графік не може бути побудований через відсутність даних.</p>
+    {% endif %}
+</body>
+</html>

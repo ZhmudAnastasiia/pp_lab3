@@ -30,11 +30,12 @@ class Book(models.Model):
     def __str__(self):
         return self.title
 
+
 class Author(models.Model):
     first_name = models.CharField(max_length=100, null=False)
     last_name = models.CharField(max_length=100, null=False)
     birth_year = models.IntegerField(null=False)
-    death_year = models.IntegerField(null=True)  # Це поле може бути пустим
+    death_year = models.IntegerField(null=True)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
@@ -45,6 +46,9 @@ class BookByAuthor(models.Model):
 
 class BookCategory(models.Model):
     name = models.CharField(max_length=100, null=False)
+    
+    def __str__(self):
+      return self.name
 
 class BookByCategory(models.Model):
     category = models.ForeignKey(BookCategory, on_delete=models.CASCADE)
@@ -61,7 +65,7 @@ class BorrowHistory(models.Model):
     reader = models.ForeignKey(Reader, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     borrow_date = models.DateField(null=False)
-    return_date = models.DateField(null=True)  # Це поле може бути пустим
+    return_date = models.DateField(null=True)
 
 class LoanStatus(models.Model):
     status_name = models.CharField(max_length=50, null=False)

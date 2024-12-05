@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Average Borrows per Reader</title>
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-3.6.2.min.js"></script>
+</head>
+<body>
+    <form method="get">
+        <label for="min_borrows">Min Borrows:</label>
+        <input type="number" id="min_borrows" name="min_borrows" value="{{ current_min_filter }}" step="0.1">
+    
+        <label for="max_borrows">Max Borrows:</label>
+        <input type="number" id="max_borrows" name="max_borrows" value="{{ current_max_filter }}" step="0.1">
+    
+        <button type="submit">Apply Filter</button>
+    </form>
+    
+    <div>
+        {{ div | safe }}
+        {{ script | safe }}
+    </div>
+    
+    <button onclick="location.href='/dashboard2/monthly-borrow-trends/'">
+        Щомісячні тренди на книги
+        </button> 
+</body>
+</html>

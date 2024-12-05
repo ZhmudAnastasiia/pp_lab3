@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Interactive Dashboard</h1>
+    
+    {% if error %}
+        <p style="color:red">{{ error }}</p>
+    {% endif %}
+
+    <div>
+        <h2>Monthly Borrow Trends by Category</h2>
+        {% if bar_chart %}
+            {{ bar_chart|safe }}
+        {% else %}
+            <p>No data available for Monthly Borrow Trends.</p>
+        {% endif %}
+    </div>
+
+    <div>
+        <h2>Reader Activity Duration</h2>
+        {% if line_chart %}
+            {{ line_chart|safe }}
+        {% else %}
+            <p>No data available for Reader Activity Duration.</p>
+        {% endif %}
+    </div>
+
+    <div>
+        <h2>Borrows Count by Gender</h2>
+        {% if pie_chart %}
+            {{ pie_chart|safe }}
+        {% else %}
+            <p>No data available for Borrows Count by Gender.</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>

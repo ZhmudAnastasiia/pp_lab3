@@ -1,0 +1,17 @@
+<h1>Borrow History for {{ user.username }}</h1>
+<table>
+    <tr>
+        <th>Book</th>
+        <th>Date Loaned</th>
+        <th>Date Returned</th>
+        <th>Status</th>
+    </tr>
+    {% for record in borrow_history %}
+    <tr>
+        <td>{{ record.book.book_title }}</td>
+        <td>{{ record.date_loaned }}</td>
+        <td>{{ record.date_returned }}</td>
+        <td>{{ record.loan_status.status_name }}</td>
+    </tr>
+    {% endfor %}
+</table>

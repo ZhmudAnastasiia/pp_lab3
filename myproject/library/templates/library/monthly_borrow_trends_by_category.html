@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Borrow Trends by Category</title>
+</head>
+<body>
+    <h1>Monthly Borrow Trends by Category</h1>
+    <div>
+        {{ bar_graph|safe }}
+    </div>
+
+    <button onclick="location.href='/dashboard1/average-borrows/'">
+        Графік середньої кількості взятих книг кожної бібліотеки
+        </button> 
+</body>
+</html>

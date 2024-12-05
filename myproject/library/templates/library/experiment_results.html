@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результати експерименту</title>
+</head>
+<body>
+    <h1>Результати експерименту з паралельними запитами</h1>
+    
+    <h2>Метрики</h2>
+    <p>Час виконання: {{ execution_time }} сек.</p>
+    <p>Використання CPU: {{ cpu_usage }}%</p>
+    <p>Використання пам'яті: {{ memory_usage }}%</p>
+
+    <h2>Результати запитів</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Категорія</th>
+                <th>Місяць</th>
+                <th>Кількість позик</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if combined_results %}
+                {% for result in combined_results %}
+                    <tr>
+                        <td>{{ result.category }}</td>
+                        <td>{{ result.month }}</td>
+                        <td>{{ result.borrow_count }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="3">Немає даних для відображення.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+    
+</body>
+</html>
+

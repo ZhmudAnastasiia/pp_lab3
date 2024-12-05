@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reader Activity</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Reader Activity Graph</h1>
+
+    <label for="duration-slider">Filter by Activity Duration (Days):</label>
+    <input type="range" id="duration-slider" min="0" max="100" step="1" value="100">
+    <span id="slider-value">100</span> days
+
+    <div id="graph-container">
+        {{ graph|safe }}
+    </div>
+
+    <script>
+        $('#duration-slider').on('input', function() {
+            const sliderValue = $(this).val();
+            $('#slider-value').text(sliderValue);
+
+            window.location.href = `?max_duration=${sliderValue}`;
+        });
+    </script>
+
+    <button onclick="location.href='/dashboard1/monthly_borrow_trends/'">
+    Щомісячні тренди на книги
+    </button> 
+</body>
+</html>

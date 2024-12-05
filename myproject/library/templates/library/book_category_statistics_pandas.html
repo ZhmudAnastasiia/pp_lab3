@@ -1,0 +1,28 @@
+<!-- book_category_statistics_pandas.html -->
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Статистика за категоріями книг</title>
+</head>
+<body>
+    <h1>Статистика за категоріями книг</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Категорія</th>
+                <th>Кількість книг</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stat in stats %}
+                <tr>
+                    <td>{{ stat.categories__name }}</td>
+                    <td>{{ stat.count }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
